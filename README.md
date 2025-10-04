@@ -29,7 +29,7 @@ Key design decisions:
 - **Event Handling**: Efficient hit detection in Canvas replaces individual event handlers.
 - **WebSocket Implementation**: Standalone Node.js WebSocket server for real-time updates (run separately from Next.js).
 - **No Virtualization**: Given the performance is smooth up to 15k seats with Canvas, virtualization complexity was deemed unnecessary.
-- **All Stretch Goals**: Implemented all 6 stretch goals to exceed requirements.
+- **Stretch Goals**: Implemented 5 out of 6 stretch goals to exceed requirements.
 
 ## Features Implemented
 
@@ -63,7 +63,6 @@ Key design decisions:
 ✅ WebSocket connection status indicator  
 ✅ Touch-optimized for mobile devices  
 ✅ ESLint configuration  
-✅ Comprehensive documentation  
 
 ## Incomplete Features / TODOs
 
@@ -99,26 +98,15 @@ Then click the "📡 Live Updates" button in the app.
 
 ## Performance Testing with 15,000 Seats
 
-To test with 15,000 seats (requirement verification):
+The application includes a large venue file (`venue-large.json`) with 15,000 seats for performance testing.
 
-1. **Quick Test**: Click the "🚀 Test with 15K Seats" button in the app
-2. **Manual Generation**: Run `node scripts/generate-large-venue.js`
-
-See [PERFORMANCE_TESTING.md](./PERFORMANCE_TESTING.md) for detailed testing guide, benchmarks, and optimization techniques.
+**Quick Test**: Click the "🚀 15K Seats" button in the app to switch to the large venue.
 
 **Key Performance Results:**
 - Canvas Mode: ~0.5s load, 60fps, ~70MB memory ✅
 - Handles 15,000 seats smoothly with zoom/pan
 - Touch gestures responsive on mobile
 - WebSocket updates animate in real-time
-
-## Documentation
-
-- **[PERFORMANCE_TESTING.md](./PERFORMANCE_TESTING.md)** - Detailed performance testing guide with benchmarks
-- **[TESTING_CHECKLIST.md](./TESTING_CHECKLIST.md)** - Quick verification checklist for all requirements
-- **[TEST_RESULTS.md](./TEST_RESULTS.md)** - E2E test results and coverage report
-- **[EVALUATION.md](./EVALUATION.md)** - Self-assessment against evaluation rubric
-- **[CANVAS_IMPLEMENTATION.md](./CANVAS_IMPLEMENTATION.md)** - Canvas rendering implementation details
 
 ## Testing
 
@@ -149,17 +137,79 @@ pnpm exec playwright show-report
 - ✅ Seat selection via Canvas clicks
 - ✅ Heat-map toggle (price tier coloring)
 - ✅ Adjacent seat finder algorithm
-- ✅ Dark mode toggle with persistence
 - ✅ Large venue performance (15K seats)
 - ✅ Keyboard accessibility
+- ✅ Seat details display
+- ✅ Selection limit (8 seats maximum)
+- ✅ LocalStorage persistence
+- ✅ WebSocket connection status
+- ✅ Clear selection functionality
+- ✅ Subtotal calculation
 
-See [TEST_RESULTS.md](./TEST_RESULTS.md) for detailed test report.
-- Clear all selections
-- Heat-map toggle
-- Adjacent seats finder
-- Dark mode toggle
-- Large venue loading (15k seats)
-- Keyboard accessibility
-- Seat details display
-- Subtotal calculation
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **UI Library**: React 19
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS
+- **Rendering**: Canvas API for hardware acceleration
+- **Real-time**: WebSocket (ws library)
+- **Testing**: Playwright for E2E tests
+- **Package Manager**: pnpm
+
+## Project Structure
+
+```
+app/
+├── components/
+│   ├── SeatingMap.tsx          # Main component with state management
+│   └── CanvasSeatingMap.tsx    # Canvas rendering engine
+├── types.ts                     # TypeScript interfaces
+├── layout.tsx                   # Root layout
+├── page.tsx                     # Home page
+└── globals.css                  # Global styles
+public/
+├── venue.json                   # Small venue (30 seats)
+└── venue-large.json             # Large venue (15k seats)
+server/
+└── websocket-server.js          # WebSocket server for live updates
+tests/
+└── seating-map.spec.ts          # Playwright E2E tests
+```
+
+## Key Features
+
+### Performance Optimizations
+- Canvas rendering with hardware acceleration
+- `useMemo` for expensive calculations (seat aggregations)
+- `useCallback` for stable function references
+- Efficient hit detection with inverse transforms
+- No virtualization needed (smooth up to 15k seats)
+
+### Accessibility
+- ARIA labels on all interactive elements
+- Keyboard navigation (Enter/Space for selection)
+- Focus indicators on Canvas
+- Screen reader announcements via live regions
+- Tab navigation support
+
+### Mobile Support
+- Touch gestures: pinch-to-zoom and pan
+- Mouse wheel zoom on desktop
+- Responsive layout with Tailwind breakpoints
+- Touch-optimized seat sizes
+
+### Real-time Features
+- WebSocket connection for live seat updates
+- Animated status changes with yellow ring
+- Connection status indicator
+- Graceful disconnect handling
+
+## Browser Support
+
+Tested and working on:
+- ✅ Chrome/Chromium (latest)
+- ✅ Safari/WebKit (latest)
+- ✅ Edge (latest)
+- ✅ Firefox (latest)
 
