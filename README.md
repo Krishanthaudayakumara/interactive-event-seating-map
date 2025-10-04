@@ -33,40 +33,41 @@ Key design decisions:
 
 ## Features Implemented
 
-### Core Requirements ✅
-✅ **Req 1**: Load and render `venue.json` with correct positioning  
-✅ **Req 2**: Smooth 60fps performance (Canvas with hardware acceleration)  
-✅ **Req 3**: Mouse click and keyboard selection (Enter/Space)  
-✅ **Req 4**: Seat details on click/focus with section, row, price, status  
-✅ **Req 5**: Select up to 8 seats with live summary and subtotal  
-✅ **Req 6**: LocalStorage persistence across page reloads  
-✅ **Req 7**: Full accessibility: aria-labels, keyboard nav, live regions  
-✅ **Req 8**: Responsive design for mobile and desktop  
+### Core Requirements
+- [x] **Requirement 1**: Load and render `venue.json` with correct positioning
+- [x] **Requirement 2**: Smooth 60fps performance (Canvas with hardware acceleration)
+- [x] **Requirement 3**: Mouse click and keyboard selection (Enter/Space)
+- [x] **Requirement 4**: Seat details on click/focus with section, row, price, status
+- [x] **Requirement 5**: Select up to 8 seats with live summary and subtotal
+- [x] **Requirement 6**: LocalStorage persistence across page reloads
+- [x] **Requirement 7**: Full accessibility: aria-labels, keyboard nav, live regions
+- [x] **Requirement 8**: Responsive design for mobile and desktop
 
-### Stretch Goals ✅ (5 OF 6 IMPLEMENTED)
-✅ **Live seat-status updates over WebSocket** with animations  
-✅ **Heat-map toggle** that colors seats by price tier  
-✅ **"Find N adjacent seats" helper** button with highlighting  
-✅ **Pinch-zoom + pan for mobile** (touch gestures)  
-✅ **End-to-end tests** with Playwright (18 passing test scenarios)
+### Stretch Goals (5 of 6 Implemented)
+- [x] Live seat-status updates over WebSocket with animations
+- [x] Heat-map toggle that colors seats by price tier
+- [x] "Find N adjacent seats" helper button with highlighting
+- [x] Pinch-zoom and pan for mobile (touch gestures)
+- [x] End-to-end tests with Playwright (18 passing test scenarios)
+- [ ] Dark-mode toggle that meets WCAG 2.1 AA contrast ratios
 
-### Additional Features ✅
-✅ Canvas rendering with rounded rectangles  
-✅ TypeScript strict mode enabled  
-✅ Visual legend for seat status/pricing  
-✅ Error handling for failed data loads  
-✅ Clear selection button  
-✅ Warning when attempting to select more than 8 seats  
-✅ Performance test toggle (15k seats)  
-✅ Zoom indicator overlay  
-✅ Mouse wheel zoom support  
-✅ WebSocket connection status indicator  
-✅ Touch-optimized for mobile devices  
-✅ ESLint configuration  
+### Additional Features
+- [x] Canvas rendering with rounded rectangles
+- [x] TypeScript strict mode enabled
+- [x] Visual legend for seat status/pricing
+- [x] Error handling for failed data loads
+- [x] Clear selection button
+- [x] Warning when attempting to select more than 8 seats
+- [x] Performance test toggle (15k seats)
+- [x] Zoom indicator overlay
+- [x] Mouse wheel zoom support
+- [x] WebSocket connection status indicator
+- [x] Touch-optimized for mobile devices
+- [x] ESLint configuration
 
 ## Incomplete Features / TODOs
 
-**All requirements and stretch goals have been completed!** ✅
+All core requirements and 5 out of 6 stretch goals have been completed.
 
 **Potential Future Improvements**:
 - Add loading skeleton for better perceived performance
@@ -94,16 +95,16 @@ To enable live seat updates:
 node server/websocket-server.js
 ```
 
-Then click the "📡 Live Updates" button in the app.
+Then click the "Live Updates" button in the app.
 
 ## Performance Testing with 15,000 Seats
 
 The application includes a large venue file (`venue-large.json`) with 15,000 seats for performance testing.
 
-**Quick Test**: Click the "🚀 15K Seats" button in the app to switch to the large venue.
+**Quick Test**: Click the "15K Seats" button in the app to switch to the large venue.
 
 **Key Performance Results:**
-- Canvas Mode: ~0.5s load, 60fps, ~70MB memory ✅
+- Canvas Mode: ~0.5s load, 60fps, ~70MB memory
 - Handles 15,000 seats smoothly with zoom/pan
 - Touch gestures responsive on mobile
 - WebSocket updates animate in real-time
@@ -112,7 +113,7 @@ The application includes a large venue file (`venue-large.json`) with 15,000 sea
 
 ### End-to-End Tests
 
-✅ **All 18 E2E tests passing** (100% pass rate on Chromium & WebKit)
+**Status**: All 18 E2E tests passing (100% pass rate on Chromium & WebKit)
 
 Run Playwright tests:
 
@@ -133,18 +134,18 @@ pnpm exec playwright show-report
 ```
 
 **Test Coverage:**
-- ✅ Venue loading and display (Metropolis Arena, seat counts)
-- ✅ Seat selection via Canvas clicks
-- ✅ Heat-map toggle (price tier coloring)
-- ✅ Adjacent seat finder algorithm
-- ✅ Large venue performance (15K seats)
-- ✅ Keyboard accessibility
-- ✅ Seat details display
-- ✅ Selection limit (8 seats maximum)
-- ✅ LocalStorage persistence
-- ✅ WebSocket connection status
-- ✅ Clear selection functionality
-- ✅ Subtotal calculation
+- [x] Venue loading and display (Metropolis Arena, seat counts)
+- [x] Seat selection via Canvas clicks
+- [x] Heat-map toggle (price tier coloring)
+- [x] Adjacent seat finder algorithm
+- [x] Large venue performance (15K seats)
+- [x] Keyboard accessibility
+- [x] Seat details display
+- [x] Selection limit (8 seats maximum)
+- [x] LocalStorage persistence
+- [x] WebSocket connection status
+- [x] Clear selection functionality
+- [x] Subtotal calculation
 
 ## Tech Stack
 
@@ -208,8 +209,8 @@ tests/
 ## Browser Support
 
 Tested and working on:
-- ✅ Chrome/Chromium (latest)
-- ✅ Safari/WebKit (latest)
-- ✅ Edge (latest)
-- ✅ Firefox (latest)
+- [x] Chrome/Chromium (latest)
+- [x] Safari/WebKit (latest)
+- [x] Edge (latest)
+- [x] Firefox (latest)
 
